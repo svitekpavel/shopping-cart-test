@@ -36,7 +36,6 @@ class App extends Component {
       dispatch,
     } = this.props;
 
-    console.log(cart);
     const productCount = utils.getAllProductsCountFromCart(cart);
     if (productCount === 0) {
       dispatch(notificationsActions.addNotification(`There's no product in your basket..`));
