@@ -13,11 +13,12 @@ import Cart from '../components/Cart';
 import * as cartActions from '../actions/cart';
 import * as tabletActions from '../actions/tablet';
 import * as notificationsActions from '../actions/notifications';
+import * as utils from '../utils';
 
 class App extends Component {
   handleAddItem = (item) => {
     const { dispatch } = this.props;
-  
+
     dispatch(cartActions.addItem(item));
     dispatch(notificationsActions.addNotification(`${item} added.`));
   }
@@ -30,7 +31,18 @@ class App extends Component {
   }
 
   handleCheckoutClicked = () => {
-    const { dispatch } = this.props;
+    const {
+      cart,
+      dispatch,
+    } = this.props;
+
+    console.log(cart);
+    const productCount = utils.getAllProductsCountFromCart(cart);
+    if (productCount === 0) {
+      dispatch(notificationsActions.addNotification(`There's no product in your basket..`));
+      return;
+    }
+
     dispatch(notificationsActions.addNotification(`Proceeding to checkout..`));
   }
 

@@ -1,7 +1,14 @@
 
 export function getProductCountFromCart(cart, name) {
-
   return getInt(cart[name]);
+}
+
+export function getAllProductsCountFromCart(cart) {
+  let sum = 0;
+  Object.keys(cart).forEach((key) => {
+    sum += getInt(cart[key]);
+  });
+  return sum;
 }
 
 export function getInt(value) {
