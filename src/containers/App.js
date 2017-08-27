@@ -5,6 +5,7 @@ import ShopHeader from '../components/ShopHeader';
 import NotificationsWrapper from '../components/NotificationsWrapper';
 import Notifications from '../components/Notifications';
 import ProductTable from '../components/ProductTable';
+import TabletLoadingScreen from '../components/TabletLoadingScreen';
 import TabletWrapper from '../components/TabletWrapper';
 import TabletFooter from '../components/TabletFooter';
 import Button from '../components/Button';
@@ -51,7 +52,7 @@ class App extends Component {
 
     if (step == 'loading') {
       return (
-        <div>Loading..</div>
+        <TabletLoadingScreen />
       );
     } else if (step == 'shop') {
       return (
