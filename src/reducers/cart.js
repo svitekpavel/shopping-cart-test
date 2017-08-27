@@ -1,7 +1,7 @@
 import * as actionTypes from '../actionTypes';
 
 export default (state = [], action) => {
-    switch (payload.type) {
+    switch (action.type) {
         case actionTypes.ADD_ITEM:
             return [
               ...state,
