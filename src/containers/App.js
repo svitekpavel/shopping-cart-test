@@ -17,16 +17,15 @@ import * as notificationsActions from '../actions/notifications';
 class App extends Component {
   handleAddItem = (item) => {
     const { dispatch } = this.props;
-    // fire notification
-    // add to basket
+  
     dispatch(cartActions.addItem(item));
     dispatch(notificationsActions.addNotification(`${item} added.`));
   }
 
   handleRemoveItem = (item) => {
     const { dispatch } = this.props;
-    // fire notification
-    // remove from basket
+
+    dispatch(cartActions.removeItem(item));
     dispatch(notificationsActions.addNotification(`${item} removed.`));
   }
 
@@ -41,7 +40,7 @@ class App extends Component {
     setTimeout(() => dispatch(notificationsActions.addNotification(`This is your heads-up display that will show store notifications..`, 3500)), 5000);
     setTimeout(() => dispatch(notificationsActions.addNotification(`Start adding goods to your basket..`, 2500)), 10000);
 
-    setTimeout(() => dispatch(tabletActions.switchStep('shop')), 5000);
+    setTimeout(() => dispatch(tabletActions.switchStep('shop')), 500);
   }
 
   renderTabletContent() {
