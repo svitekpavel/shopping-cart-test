@@ -1,0 +1,23 @@
+.button {
+  font-family: Arial;
+  font-size: 16px;
+  border: 1px solid #aaa;
+  background-color: #ccc;
+  border-radius: 5px;
+  text-shadow: 0px 1px #2f6627;
+  color: #fff;
+  cursor: pointer;
+  padding: 10px 15px;
+}
+
+.button-tiny {
+  height: 25px;
+  width: 25px;
+  border-radius: 25px;
+  padding: 0;
+}
+
+.button-primary {
+  background-color: #4bd368;
+  border-color: #18ab29;
+}

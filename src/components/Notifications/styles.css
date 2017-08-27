@@ -1,0 +1,11 @@
+.notifications {
+  color: #fff;
+  font-size: 19px;
+  line-height: 28px;
+
+}
+
+.notifications > ul {
+  list-style: none;
+  transform: skew(20deg);
+}

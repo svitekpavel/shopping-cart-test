@@ -1,0 +1,14 @@
+.product-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-title {
+  padding: 4px 0;
+}
+
+.product-buttons {
+  padding: 4px 0;
+}
