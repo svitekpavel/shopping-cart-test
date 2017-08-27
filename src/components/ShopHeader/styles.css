@@ -1,0 +1,14 @@
+.shop-header {
+  position: relative;
+  padding: 20px 10px;
+}
+
+.shop-logo {
+  /*position: absolute;
+  left: 12px;
+  top: 12px;*/
+}
+
+.shop-logo > img {
+  width: 70px;
+}

@@ -7,6 +7,8 @@ class Product extends React.Component {
   render() {
     const {
       children,
+      count,
+      icon,
       title,
       onAdd,
       onRemove,
@@ -14,10 +16,13 @@ class Product extends React.Component {
 
     return (
       <div className="product-wrapper">
-        <div className="product-title">{title}</div>
+        <div className="product-icon">
+          <img src={icon} />
+        </div>
         <div className="product-content">
           {children}
         </div>
+        <div className="product-count">{count} {count === 1 ? 'pc' : 'pcs'}</div>
         <div className="product-buttons">
           <AddButton onClick={onAdd} />
           <RemoveButton onClick={onRemove} />

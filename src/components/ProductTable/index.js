@@ -2,6 +2,11 @@ import React from 'react';
 import AddButton from '../AddButton';
 import RemoveButton from '../RemoveButton';
 import Product from '../Product';
+import * as utils from '../../utils';
+import IconApple from '../../assets/apple.png';
+import IconBanana from '../../assets/banana.png';
+import IconOrange from '../../assets/orange.png';
+import IconPapaya from '../../assets/papaya.png';
 import './styles.css';
 
 class ProductTable extends React.Component {
@@ -29,26 +34,35 @@ class ProductTable extends React.Component {
   }
 
   render() {
+    const { cart } = this.props;
 
     return (
       <div className="product-table">
         <Product
           title="Apple"
+          icon={IconApple}
+          count={utils.getProductCountFromCart(cart, 'Apple')}
           onAdd={this.handleAddApple}
           onRemove={this.handleRemoveApple}
         />
         <Product
           title="Banana"
+          icon={IconBanana}
+          count={utils.getProductCountFromCart(cart, 'Banana')}
           onAdd={this.handleAddBanana}
           onRemove={this.handleRemoveBanana}
         />
         <Product
           title="Orange"
+          icon={IconOrange}
+          count={utils.getProductCountFromCart(cart, 'Orange')}
           onAdd={this.handleAddOrange}
           onRemove={this.handleRemoveOrange}
         />
         <Product
           title="Papaya"
+          icon={IconPapaya}
+          count={utils.getProductCountFromCart(cart, 'Papaya')}
           onAdd={this.handleAddPapaya}
           onRemove={this.handleRemovePapaya}
         />

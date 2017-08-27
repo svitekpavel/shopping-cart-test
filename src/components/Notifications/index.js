@@ -5,7 +5,8 @@ class Notifications extends React.Component {
   render() {
     const { notifications } = this.props;
 
-    const notificationNodes = notifications.map(n => <li>{n.text}</li>);
+    const last = notifications.slice(-5);
+    const notificationNodes = last.map(n => <li>{n.text}</li>);
 
     return (
       <div className="notifications">

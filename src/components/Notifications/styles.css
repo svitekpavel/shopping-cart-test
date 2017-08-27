@@ -1,11 +1,14 @@
 .notifications {
   color: #fff;
-  font-size: 19px;
+  font-size: 24px;
   line-height: 28px;
-
+  font-family: Raleway, 'sans-serif';
+  font-weight: 100;
+  letter-spacing: 1px;
+  max-width: 500px;
 }
 
 .notifications > ul {
   list-style: none;
-  transform: skew(20deg);
+  transform: skew(30deg);
 }
