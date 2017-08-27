@@ -1,6 +1,24 @@
 import * as actionTypes from '../actionTypes';
 
-export default (state = [], action) => {
+const defaultState = [
+  {
+    name: 'Apple',
+  },
+  {
+    name: 'Apple',
+  },
+  {
+    name: 'Banana',
+  },
+  {
+    name: 'Orange',
+  },
+  {
+    name: 'Orange',
+  },
+];
+
+export default (state = defaultState, action) => {
     switch (action.type) {
         case actionTypes.ADD_ITEM:
             return [
