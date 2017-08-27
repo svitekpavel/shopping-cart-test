@@ -1,21 +1,112 @@
 import React, { Component } from 'react';
-import logo from '../assets/logo.svg';
-import './App.css';
+import { connect } from 'react-redux';
+import CarInterior from '../components/CarInterior';
+import ShopHeader from '../components/ShopHeader';
+import NotificationsWrapper from '../components/NotificationsWrapper';
+import Notifications from '../components/Notifications';
+import ProductTable from '../components/ProductTable';
+import TabletWrapper from '../components/TabletWrapper';
+import TabletFooter from '../components/TabletFooter';
+import Button from '../components/Button';
+import Cart from '../components/Cart';
+import * as cartActions from '../actions/cart';
+import * as tabletActions from '../actions/tablet';
+import * as notificationsActions from '../actions/notifications';
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+  handleAddItem = (item) => {
+    const { dispatch } = this.props;
+    // fire notification
+    // add to basket
+    dispatch(cartActions.addItem(item));
+    dispatch(notificationsActions.addNotification(`${item} added.`));
+  }
+
+  handleRemoveItem = (item) => {
+    const { dispatch } = this.props;
+    // fire notification
+    // remove from basket
+    dispatch(notificationsActions.addNotification(`${item} removed.`));
+  }
+
+  handleCheckoutClicked = () => {
+    const { dispatch } = this.props;
+    dispatch(notificationsActions.addNotification(`Proceeding to checkout..`));
+  }
+
+  componentDidMount = () => {
+    const { dispatch } = this.props;
+    setTimeout(() => dispatch(notificationsActions.addNotification(`Welcome to Amazon Store for Tesla..`, 2500)), 1500);
+    setTimeout(() => dispatch(notificationsActions.addNotification(`This is your heads-up display that will show store notifications..`, 3500)), 5000);
+    setTimeout(() => dispatch(notificationsActions.addNotification(`Start adding goods to your basket..`, 2500)), 10000);
+
+    setTimeout(() => dispatch(tabletActions.switchStep('shop')), 5000);
+  }
+
+  renderTabletContent() {
+    const {
+      cart,
+      step,
+    } = this.props;
+
+    if (step == 'loading') {
+      return (
+        <div>Loading..</div>
+      );
+    } else if (step == 'shop') {
+      return (
+        <div>
+          <ShopHeader />
+          <ProductTable
+            cart={cart}
+            onAddProduct={this.handleAddItem}
+            onRemoveProduct={this.handleRemoveItem}
+          />
+          <TabletFooter>
+            <Button
+              primary
+              onClick={this.handleCheckoutClicked}
+            >Proceed to checkout</Button>
+          </TabletFooter>
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      );
+    }
+
+    return (
+      <div>UNDEFINED</div>
+    );
+  }
+
+  render() {
+    const {
+      notifications,
+    } = this.props;
+
+    return (
+      <CarInterior>
+        <NotificationsWrapper>
+          <Notifications notifications={notifications} />
+        </NotificationsWrapper>
+        <TabletWrapper>
+          { this.renderTabletContent() }
+        </TabletWrapper>
+      </CarInterior>
     );
   }
 }
 
-export default App;
+function mapStateToProps(state) {
+  return {
+    notifications: state.notifications,
+    cart: state.cart,
+    step: state.tablet.step,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    dispatch,
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
