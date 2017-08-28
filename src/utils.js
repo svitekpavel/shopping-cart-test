@@ -16,11 +16,13 @@ export function createSummaryFromCart(cart) {
   Object.keys(cart).forEach((product) => {
     const price = priceMap[product];
     const count = cart[product];
-    const subPrice = price * count;
-    if (product === 'Papaya') {
+    let subPrice = price * count;
 
-      return;
+    // Three for two price
+    if (product === 'Papaya') {
+      subPrice -= price * parseInt(count/3);
     }
+
     summary.items.push({
       product,
       count: cart[product],
