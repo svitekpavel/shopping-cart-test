@@ -1,3 +1,37 @@
+const priceMap = {
+  'Apple': 0.25,
+  'Orange': 0.30,
+  'Banana': 0.15,
+  'Papaya': 0.50,
+};
+
+const discountMap = {};
+
+export function createSummaryFromCart(cart) {
+  const summary = {
+    items: [],
+    totalPrice: 0.0,
+  };
+
+  Object.keys(cart).forEach((product) => {
+    const price = priceMap[product];
+    const count = cart[product];
+    const subPrice = price * count;
+    if (product === 'Papaya') {
+
+      return;
+    }
+    summary.items.push({
+      product,
+      count: cart[product],
+      price: priceMap[product],
+      subPrice,
+    });
+
+    summary.totalPrice += subPrice;
+  });
+  return summary;
+}
 
 export function getProductCountFromCart(cart, name) {
   return getInt(cart[name]);

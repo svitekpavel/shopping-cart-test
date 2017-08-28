@@ -9,7 +9,7 @@ import TabletLoadingScreen from '../components/TabletLoadingScreen';
 import TabletWrapper from '../components/TabletWrapper';
 import TabletFooter from '../components/TabletFooter';
 import Button from '../components/Button';
-import Cart from '../components/Cart';
+import CartSummary from '../components/CartSummary';
 import * as cartActions from '../actions/cart';
 import * as tabletActions from '../actions/tablet';
 import * as notificationsActions from '../actions/notifications';
@@ -43,6 +43,20 @@ class App extends Component {
     }
 
     dispatch(notificationsActions.addNotification(`Proceeding to checkout..`));
+
+    dispatch(tabletActions.switchStep('loading'));
+    setTimeout(() => dispatch(tabletActions.switchStep('summary')), 1000);
+  }
+
+  handleSubmitOrder = () => {
+    const { dispatch } = this.props;
+    dispatch(notificationsActions.addNotification(`Order successful!`));
+    dispatch(tabletActions.switchStep('order-successful'));
+  }
+
+  handleContinueShoppingClicked = () => {
+    const { dispatch } = this.props;
+    dispatch(tabletActions.switchStep('shop'));
   }
 
   componentDidMount = () => {
@@ -60,11 +74,24 @@ class App extends Component {
       step,
     } = this.props;
 
-    if (step == 'loading') {
+    if (step === 'loading') {
       return (
         <TabletLoadingScreen />
       );
-    } else if (step == 'shop') {
+    } else if (step === 'order-successful') {
+      return (
+        <div>
+          <ShopHeader />
+          <h3>Order successful!</h3>
+          <TabletFooter>
+            <Button
+              primary
+              onClick={this.handleContinueShoppingClicked}
+            >Continue shopping</Button>
+          </TabletFooter>
+        </div>
+      );
+    } else if (step === 'shop') {
       return (
         <div>
           <ShopHeader />
@@ -81,10 +108,25 @@ class App extends Component {
           </TabletFooter>
         </div>
       );
+    } else if (step === 'summary') {
+      const summary = utils.createSummaryFromCart(cart);
+
+      return (
+        <div>
+          <ShopHeader />
+          <CartSummary summary={summary} />
+          <TabletFooter>
+            <Button
+              primary
+              onClick={this.handleSubmitOrder}
+            >Submit and pay ${summary.totalPrice.toFixed(2)}</Button>
+          </TabletFooter>
+        </div>
+      );
     }
 
     return (
-      <div>UNDEFINED</div>
+      <div>You just hacked your Tesla :-)</div>
     );
   }
 
@@ -110,6 +152,7 @@ function mapStateToProps(state) {
   return {
     notifications: state.notifications,
     cart: state.cart,
+    // summary: state.cartSummary,
     step: state.tablet.step,
   };
 }
