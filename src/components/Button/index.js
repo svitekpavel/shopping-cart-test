@@ -21,12 +21,12 @@ class Button extends React.Component {
     className);
 
     return (
-      <button
+      <div
         onClick={onClick}
         className={classes}
       >
         {children}
-      </button>
+      </div>
     );
   }
 }
