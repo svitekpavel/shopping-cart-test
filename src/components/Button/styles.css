@@ -1,6 +1,7 @@
 .button {
-  font-family: Arial;
+  font-family: Raleway, sans-serif;
   font-size: 16px;
+  font-weight: 300;
   border: 1px solid #aaa;
   background-color: #fff;
   border-radius: 5px;

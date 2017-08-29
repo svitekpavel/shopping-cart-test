@@ -8,8 +8,8 @@ class CartSummary extends React.Component {
     const summaryLines = summary.items.map((item) => {
       return (
         <div className="cart-summary-line">
-          <div className="cart-summary-label">{item.product}</div>
-          <div className="cart-summary-item-count">{item.count} pcs.</div>
+          <div className="cart-summary-item-label">{item.product}</div>
+          <div className="cart-summary-item-count">{item.count} pcs</div>
           <div className="cart-summary-item-price">${item.price.toFixed(2)}</div>
           <div className="cart-summary-item-subprice">${item.subPrice.toFixed(2)}</div>
         </div>

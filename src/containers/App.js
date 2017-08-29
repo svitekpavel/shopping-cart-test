@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import CarInterior from '../components/CarInterior';
 import ShopHeader from '../components/ShopHeader';
+import ShopThankYouScreen from '../components/ShopThankYouScreen';
 import NotificationsWrapper from '../components/NotificationsWrapper';
 import Notifications from '../components/Notifications';
 import ProductTable from '../components/ProductTable';
@@ -120,7 +121,7 @@ class App extends Component {
       return (
         <div>
           <ShopHeader />
-          <h3>Order successful!</h3>
+          <ShopThankYouScreen />
           <TabletFooter>
             <Button
               primary
