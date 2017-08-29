@@ -26,10 +26,19 @@ class App extends Component {
   }
 
   handleRemoveItem = (item) => {
-    const { dispatch } = this.props;
+    const {
+      cart,
+      dispatch,
+    } = this.props;
 
-    dispatch(cartActions.removeItem(item));
-    dispatch(notificationsActions.addNotification(`${item} removed.`));
+    const count = utils.getProductCountFromCart(cart, item);
+
+    if (count > 0) {
+      dispatch(cartActions.removeItem(item));
+      dispatch(notificationsActions.addNotification(`${item} removed.`));
+    } else {
+      dispatch(notificationsActions.addNotification(`There's no ${item} to remove.`));
+    }
   }
 
   handleCheckoutClicked = () => {
@@ -78,6 +87,7 @@ class App extends Component {
       recorder.start(recordingInterval)
         .then((blob) => {
           console.log('SUCESS!!!');
+          console.log(blob);
         })
         .catch((err) => {
           console.log(err);
