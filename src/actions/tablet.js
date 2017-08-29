@@ -8,3 +8,15 @@ export const switchStep = (step) => {
     },
   };
 };
+
+export const startRecording = () => {
+  return {
+    type: actionTypes.START_RECORDING,
+  };
+};
+
+export const stopRecording = () => {
+  return {
+    type: actionTypes.STOP_RECORDING,
+  };
+};

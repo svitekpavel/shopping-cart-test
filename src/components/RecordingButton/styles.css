@@ -1,0 +1,22 @@
+.mic-wrapper {
+  position: absolute;
+  left: 24px;
+  top: 12px;
+}
+
+.mic {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 11px;
+}
+
+.img-wrapper {
+  padding: 2px 4px;
+}
+
+.img-wrapper > img {
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+}

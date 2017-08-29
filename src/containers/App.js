@@ -5,6 +5,7 @@ import ShopHeader from '../components/ShopHeader';
 import NotificationsWrapper from '../components/NotificationsWrapper';
 import Notifications from '../components/Notifications';
 import ProductTable from '../components/ProductTable';
+import RecordingButton from '../components/RecordingButton';
 import TabletLoadingScreen from '../components/TabletLoadingScreen';
 import TabletWrapper from '../components/TabletWrapper';
 import TabletFooter from '../components/TabletFooter';
@@ -59,19 +60,35 @@ class App extends Component {
     dispatch(tabletActions.switchStep('shop'));
   }
 
+  handleToggleRecording = () => {
+    const {
+      dispatch,
+      isRecording,
+    } = this.props;
+
+    if (isRecording) {
+      dispatch(tabletActions.stopRecording());
+    } else {
+      dispatch(tabletActions.startRecording());
+      setTimeout(() => dispatch(tabletActions.stopRecording()), 2500);
+    }
+  }
+
   componentDidMount = () => {
     const { dispatch } = this.props;
     setTimeout(() => dispatch(notificationsActions.addNotification(`Welcome to Amazon Store for Tesla..`, 2500)), 1500);
     setTimeout(() => dispatch(notificationsActions.addNotification(`This is your heads-up display that will show store notifications..`, 3500)), 5000);
     setTimeout(() => dispatch(notificationsActions.addNotification(`Start adding goods to your basket..`, 2500)), 10000);
 
-    setTimeout(() => dispatch(tabletActions.switchStep('shop')), 5000);
+    // setTimeout(() => dispatch(tabletActions.switchStep('shop')), 5000);
+    setTimeout(() => dispatch(tabletActions.switchStep('shop')), 500);
   }
 
   renderTabletContent() {
     const {
       cart,
       step,
+      isRecording,
     } = this.props;
 
     if (step === 'loading') {
@@ -95,6 +112,10 @@ class App extends Component {
       return (
         <div>
           <ShopHeader />
+          <RecordingButton
+            isRecording={isRecording}
+            onClick={this.handleToggleRecording}
+          />
           <ProductTable
             cart={cart}
             onAddProduct={this.handleAddItem}
@@ -154,6 +175,7 @@ function mapStateToProps(state) {
     cart: state.cart,
     // summary: state.cartSummary,
     step: state.tablet.step,
+    isRecording: state.tablet.recording,
   };
 }
 
