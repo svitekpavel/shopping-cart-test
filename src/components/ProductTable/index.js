@@ -1,6 +1,4 @@
 import React from 'react';
-import AddButton from '../AddButton';
-import RemoveButton from '../RemoveButton';
 import Product from '../Product';
 import * as utils from '../../utils';
 import IconApple from '../../assets/apple.png';

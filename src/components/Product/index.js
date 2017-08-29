@@ -9,7 +9,6 @@ class Product extends React.Component {
       children,
       count,
       icon,
-      title,
       onAdd,
       onRemove,
     } = this.props;
@@ -17,7 +16,7 @@ class Product extends React.Component {
     return (
       <div className="product-wrapper">
         <div className="product-icon">
-          <img src={icon} />
+          <img src={icon} alt="icon" />
         </div>
         <div className="product-content">
           {children}

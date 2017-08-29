@@ -1,5 +1,4 @@
 import React from 'react';
-import Button from '../Button';
 import AmazonLogo from '../../assets/amazon-logo.png';
 import './styles.css';
 
@@ -8,7 +7,7 @@ class ShopHeader extends React.Component {
     return (
       <div className="shop-header">
         <div className="shop-logo">
-          <img src={AmazonLogo} />
+          <img src={AmazonLogo} alt="amazon logo" />
         </div>
       </div>
     );

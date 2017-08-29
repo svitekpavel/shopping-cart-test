@@ -4,11 +4,9 @@ import './styles.css';
 
 class TabletLoadingScreen extends React.Component {
   render() {
-    const { children } = this.props;
-
     return (
       <div className="tablet-loading-screen">
-        <img src={IconSpinner} width={75} height={75} />
+        <img src={IconSpinner} width={75} height={75} alt="spinner"/>
       </div>
     );
   }

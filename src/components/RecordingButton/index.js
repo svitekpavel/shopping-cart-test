@@ -17,7 +17,7 @@ class RecordingButton extends React.Component {
       <div className="mic-wrapper">
         <div className="mic">
           <div className="img-wrapper">
-            <img src={image} onClick={onClick} />
+            <img src={image} onClick={onClick} alt="Record" />
           </div>
           {label}
         </div>

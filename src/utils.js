@@ -5,8 +5,6 @@ const priceMap = {
   'Papaya': 0.50,
 };
 
-const discountMap = {};
-
 export function createSummaryFromCart(cart) {
   const summary = {
     items: [],
@@ -20,7 +18,7 @@ export function createSummaryFromCart(cart) {
 
     // Three for two price
     if (product === 'Papaya') {
-      subPrice -= price * parseInt(count/3);
+      subPrice -= price * parseInt(count/3, 10);
     }
 
     summary.items.push({
