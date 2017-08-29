@@ -11,6 +11,7 @@ import TabletWrapper from '../components/TabletWrapper';
 import TabletFooter from '../components/TabletFooter';
 import Button from '../components/Button';
 import CartSummary from '../components/CartSummary';
+import * as recorder from '../lib/media-recorder';
 import * as cartActions from '../actions/cart';
 import * as tabletActions from '../actions/tablet';
 import * as notificationsActions from '../actions/notifications';
@@ -70,7 +71,17 @@ class App extends Component {
       dispatch(tabletActions.stopRecording());
     } else {
       dispatch(tabletActions.startRecording());
-      setTimeout(() => dispatch(tabletActions.stopRecording()), 2500);
+
+      const recordingInterval = 2500;
+      setTimeout(() => dispatch(tabletActions.stopRecording()), recordingInterval);
+
+      recorder.start(recordingInterval)
+        .then((blob) => {
+          console.log('SUCESS!!!');
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
   }
 
