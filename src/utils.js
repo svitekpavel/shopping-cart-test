@@ -15,16 +15,23 @@ export function createSummaryFromCart(cart) {
     const price = priceMap[product];
     const count = cart[product];
     let subPrice = price * count;
+    let note = null;
 
     // Three for two price
-    if (product === 'Papaya') {
+    if (product === 'Papaya' && count > 2) {
       subPrice -= price * parseInt(count/3, 10);
+      note = 'Special deal: three for two';
+    }
+
+    if (count === 0) {
+      return;
     }
 
     summary.items.push({
       product,
       count: cart[product],
       price: priceMap[product],
+      note,
       subPrice,
     });
 

@@ -20,6 +20,10 @@
 .cart-summary-item-label {
   padding: 0 8px;
 }
+.cart-summary-item-note {
+  font-size: 16px;
+  font-style: italic;
+}
 .cart-summary-item-count {
   padding: 0 4px;
 }
