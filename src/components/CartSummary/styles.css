@@ -1,9 +1,14 @@
-.cart-summary {
+.cart-summary-wrapper {
   display: flex;
   flex-direction: column;
-  font-size: 20px;
+  font-size: 18px;
   font-family: Raleway;
-  padding: 0 100px 20px;
+  /*padding: 0 100px 20px;*/
+  align-items: center;
+}
+
+.cart-summary-content {
+  display: block;
 }
 
 .cart-summary-line {

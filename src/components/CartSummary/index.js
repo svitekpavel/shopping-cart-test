@@ -17,11 +17,13 @@ class CartSummary extends React.Component {
     })
 
     return (
-      <div className="cart-summary">
-        {summaryLines}
-        <div className="cart-summary-line">
-          <div className="cart-summary-label">Total price</div>
-          <div className="cart-summary-item-totalprice">${summary.totalPrice.toFixed(2)}</div>
+      <div className="cart-summary-wrapper">
+        <div className="cart-summary">
+          {summaryLines}
+          <div className="cart-summary-line">
+            <div className="cart-summary-label">Total price</div>
+            <div className="cart-summary-item-totalprice">${summary.totalPrice.toFixed(2)}</div>
+          </div>
         </div>
       </div>
     );
