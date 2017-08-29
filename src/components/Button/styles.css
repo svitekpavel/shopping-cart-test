@@ -13,14 +13,14 @@
 }
 
 .button-tiny {
-  height: 25px;
-  width: 25px;
-  border-radius: 25px;
+  height: 20px;
+  width: 20px;
+  border-radius: 20px;
   padding: 0;
-  font-size: 20px;
-  line-height: 22px;
+  font-size: 16px;
+  line-height: 18px;
   text-shadow: none;
-  font-weight: bold;
+  color: #888;
 }
 
 .button-primary {
