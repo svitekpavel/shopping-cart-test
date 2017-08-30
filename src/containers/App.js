@@ -102,8 +102,8 @@ class App extends Component {
     setTimeout(() => dispatch(notificationsActions.addNotification(`This is your heads-up display that will show store notifications..`, 3500)), 5000);
     setTimeout(() => dispatch(notificationsActions.addNotification(`Start adding goods to your basket..`, 2500)), 10000);
 
-    // setTimeout(() => dispatch(tabletActions.switchStep('shop')), 5000);
-    setTimeout(() => dispatch(tabletActions.switchStep('shop')), 500);
+    setTimeout(() => dispatch(tabletActions.switchStep('shop')), 5000);
+    // setTimeout(() => dispatch(tabletActions.switchStep('shop')), 500);
   }
 
   renderTabletContent() {
